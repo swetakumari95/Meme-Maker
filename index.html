@@ -10,6 +10,10 @@
     <style>
         #image-container {
             display: flex;
+            padding-top: 10px;
+        }
+        #userInput{
+            padding: 10px;
         }
     </style>
 </head>
@@ -21,12 +25,12 @@
     </div>
     <div id="image-container">
         <canvas width="500" height="500"></canvas>
-        <div>
+        <div id="userInput">
             <span>Top Line:</span><br/>
             <input id="topLineText" type="text"><br/><br/>
             <span>Bottom Line:</span><br/>
             <input id="bottomLineText" type="text"><br/></br>
-            <button id="saveBtn">Save</button>
+            <button id="saveBtn"><span>Save</span></button>
         </div>
     </div>
     <script>
@@ -48,7 +52,8 @@
             var canvas = document.querySelector('canvas');
             var ctx = canvas.getContext("2d");
             // My code here
-            ctx.drawImage(image,0,0,canvas.width,canvas.height);
+            if (image != null)
+                ctx.drawImage(image,0,0,canvas.width,canvas.height);
 
             ctx.font = "36pt Impact";
             ctx.textAlign = "center";
@@ -58,10 +63,10 @@
             ctx.strokeStyle = "black";
             ctx.strokeText(topLine, canvas.width/2, 50);
             ctx.fillStyle = "white";
-            ctx.fillText(bottomLine, canvas.width/2, canvas.height-50);
+            ctx.fillText(bottomLine, canvas.width/2, canvas.height-40);
             ctx.lineWidth = 3;
             ctx.strokeStyle = "black";
-            ctx.strokeText(bottomLine, canvas.width/2, canvas.height-50);
+            ctx.strokeText(bottomLine, canvas.width/2, canvas.height-40);
         }
 
         function saveFile() {
